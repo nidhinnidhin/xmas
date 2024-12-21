@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas Greeting Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      background: url('https://img.freepik.com/premium-photo/cristmas-wallpaper_980716-3669.jpg?w=1060') no-repeat center center/cover;
+    }
+
+    .card {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      margin: 100px auto;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1s ease-in-out;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+    }
+
+    .card-front {
+      background: linear-gradient(45deg, red, green);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      border: 5px solid white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-back {
+      background: white;
+      color: black;
+      transform: rotateY(180deg);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-back img {
+      width: 50px;
+      margin: 10px;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: 0;
+      color: white;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        🎅 Merry Christmas!
+      </div>
+      <div class="card-back" >
+        <h2 style="color: red;">Wish you all a happy christmas</h2>
+        <p>By BCT 220</p>
+        <img src="https://img.freepik.com/free-vector/fir-tree-with-decorations-presents-santa-hat_74855-741.jpg?ga=GA1.1.964727592.1734769345&semt=ais_hybrid" alt="Tree">
+        <img src="https://img.freepik.com/free-photo/portrait-man-santa-claus-costume-with-luxurious-white-beard-santa-s-hat-red-costume-full-length-isolated-white-background_155003-23328.jpg?ga=GA1.1.964727592.1734769345&semt=ais_hybrid" alt="Santa">
+        <img src="https://img.freepik.com/free-vector/christmas-gift-snow_1048-7100.jpg?ga=GA1.1.964727592.1734769345&semt=ais_hybrid" alt="Gift">
+        <img src="https://img.freepik.com/premium-vector/realistic-jingle-bell-christmas-decoration-vector_565129-92.jpg?ga=GA1.1.964727592.1734769345&semt=ais_hybrid" alt="Bell">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.textContent = '❄';
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    }
+
+    setInterval(createSnowflake, 100);
+  </script>
+</body>
+</html>
